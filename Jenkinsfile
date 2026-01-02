@@ -61,7 +61,7 @@ pipeline {
                 aws eks update-kubeconfig \
                 --region $AWS_REGION \
                 --name devops-eks-cluster
-
+                kubectl apply -y k8s-manifests/ deployement.yaml   service.yaml
                 kubectl set image deployment/app-deployment \
                 app=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG
 
